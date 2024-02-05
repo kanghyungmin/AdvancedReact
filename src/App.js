@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Day from "./component/Day";
+import DayList from "./component/DayList";
+import EmptyPage from "./component/EmptyPage";
+import Header from "./component/Header";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { SplitScreen } from "./component/split-screen";
+
+const LeftSideComp = ({ title }) => {
+  return <h2 style={{ backgroundColor: "red" }}>{title}</h2>;
+};
+
+const RightSideComp = ({ title }) => {
+  return <h2 style={{ backgroundColor: "blue" }}>{title}</h2>;
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SplitScreen
+      // Left={LeftSideComp}
+      // Right={RightSideComp}
+      leftWidth={1}
+      rightWidth={3}
+    >
+      <LeftSideComp title={"Right"} />
+      <RightSideComp title={"Left"} />
+    </SplitScreen>
   );
 }
 
