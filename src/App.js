@@ -1,30 +1,19 @@
-import "./App.css";
-import Day from "./component/Day";
-import DayList from "./component/DayList";
-import EmptyPage from "./component/EmptyPage";
-import Header from "./component/Header";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { SplitScreen } from "./component/split-screen";
+import { Modal } from "./component/Modal";
+import { LargeBookListItem } from "./component/books/LargeListItems";
 
-const LeftSideComp = ({ title }) => {
-  return <h2 style={{ backgroundColor: "red" }}>{title}</h2>;
-};
-
-const RightSideComp = ({ title }) => {
-  return <h2 style={{ backgroundColor: "blue" }}>{title}</h2>;
-};
+import { books } from "./db/books";
 
 function App() {
+  console.log(books);
   return (
-    <SplitScreen
-      // Left={LeftSideComp}
-      // Right={RightSideComp}
-      leftWidth={1}
-      rightWidth={3}
-    >
-      <LeftSideComp title={"Right"} />
-      <RightSideComp title={"Left"} />
-    </SplitScreen>
+    <>
+      <Modal>
+        <LargeBookListItem book={books[0]} />
+      </Modal>
+      {/* items={authors}
+        sourceName={"book"}
+        ItemComponent={LargeBookListItem} */}
+    </>
   );
 }
 
