@@ -1,29 +1,33 @@
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
-import { Modal } from "./component/Modal";
-import { LargeBookListItem } from "./component/books/LargeListItems";
-import { CurrentUserLoader } from "./component/current-user-loader";
-import { DataSource } from "./component/data-source";
-import { ResourceLoader } from "./component/resource-loader";
-import { UserInfo } from "./component/user-info";
-import { UserLoader } from "./component/user-loader";
-import axios from "axios";
+import { UncontrolledFlow } from "./component/uncontrolled-flow";
 
-const getDataFromLocalStorage = (key) => {
-  return localStorage.getItem(key);
+const StepOne = ({ goNext }) => {
+  <>
+    <h1>Step #1</h1>
+    <button onClick={goNext}>Next</button>
+  </>;
+};
+
+const StepTwo = ({ goNext }) => {
+  <>
+    <h1>Step #2</h1>
+    <button onClick={goNext}>Next</button>
+  </>;
+};
+const StepThree = ({ goNext }) => {
+  <>
+    <h1>Step #3</h1>
+    <button onClick={goNext}>Next</button>
+  </>;
 };
 
 function App() {
   return (
     <>
-      <DataSource
-        getData={async () => {
-          const response = await axios.get("http://localhost:9090/users/3");
-          return response.data;
-        }}
-        resourceName={"user"}
-      >
-        <UserInfo />
-      </DataSource>
+      <UncontrolledFlow>
+        <StepOne />
+        <StepTwo />
+        <StepThree />
+      </UncontrolledFlow>
     </>
   );
 }

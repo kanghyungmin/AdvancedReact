@@ -12,7 +12,7 @@ export const UserInfo = ({ user }) => {
           {
             console.log(book);
           }
-          <li key={book}>{book}</li>;
+          return <li key={book}>{book}</li>;
         })}
       </ul>
     </>
